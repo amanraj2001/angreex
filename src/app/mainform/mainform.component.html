@@ -1,0 +1,265 @@
+<p>mainform works!</p>
+<div class="container">
+  <form [formGroup]="form">
+    <div formGroupName="FullName">
+
+      <label for="">First Name</label>
+      <input type="text" formControlName="FirstName" class="form-control">
+      <div *ngIf="fname && fname.invalid && fname.touched">
+        <small *ngIf="fname.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="fname.errors?.['pattern']">
+            No space allowed
+        </small>
+
+      </div>
+      <label for="">Middle Name</label>
+      <input type="text" formControlName="MiddleName" class="form-control">
+      <div *ngIf="mname && mname.invalid && mname.touched">
+        <small *ngIf="mname.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="mname.errors?.['pattern']">
+          No space allowed
+        </small>
+
+      </div>
+      <label for="">Last Name</label>
+      <input type="text" formControlName="LastName" class="form-control">
+      <div *ngIf="lname && lname.invalid && lname.touched">
+        <small *ngIf="lname.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="lname.errors?.['pattern']">
+          No space allowed
+        </small>
+
+      </div>
+    </div>
+    <label for="">Email</label>
+
+    <input type="text" formControlName="EmailID" class="form-control">
+    <div *ngIf="mail && mail.invalid && mail.touched">
+      <small *ngIf="mail.errors?.['required']">
+          Empty field
+      </small>
+      <small *ngIf="mail.errors?.['pattern']">
+        Incorrect email id
+      </small>
+      <small *ngIf="mail.errors?.['email']">
+        Incorrect email id
+      </small>
+
+    </div>
+    <div formGroupName="Address">
+
+      <label for="">Building</label>
+      <input type="text" formControlName="Building" class="form-control">
+      <div *ngIf="build && build.invalid && build.touched">
+        <small *ngIf="build.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="build.errors?.['pattern']">
+          No space allowed
+        </small>
+      </div>
+      <label for="">Area</label>
+      <input type="text" formControlName="Area" class="form-control">
+      <div *ngIf="area && area.invalid && area.touched">
+        <small *ngIf="area.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="area.errors?.['pattern']">
+          No space allowed
+        </small>
+      </div>
+      <div >
+        <label for="">State</label>
+        <select formControlName="State" class="form-select" aria-label="Default select example" (change)="cng($event)" >
+          <option selected>Open this select menu</option>
+          <ng-container *ngFor="let item of stat;let i = index"  >
+
+
+            <option [value]="item.StateID">{{item.StateName}}</option>
+          </ng-container>
+
+        </select>
+        <div *ngIf="state && state.invalid && state.touched">
+          <small *ngIf="state.errors?.['required']">
+              Empty field
+          </small>
+        </div>
+
+      </div>
+      <div>
+        <label for="">City</label>
+        <select formControlName="City" class="form-select" aria-label="Default select example"  >
+          <option selected>Open this select menu</option>
+          <ng-container *ngFor="let item of cit;let i = index"  >
+
+
+            <option>{{item.Name}}</option>
+          </ng-container>
+
+        </select>
+        <div *ngIf="city && city.invalid && city.touched">
+          <small *ngIf="city.errors?.['required']">
+              Empty field
+          </small>
+        </div>
+
+      </div>
+
+
+
+
+<!--
+    <div formArrayName="Skills">
+      <div formGroupName="">
+
+      </div>
+
+    </div> -->
+
+
+    </div>
+    <label for="">Gender</label>
+    <div formGroupName="Gender">
+
+      <div class="form-check">
+        <input class="form-check-input"  formControlName="Gen" value="Male" type="radio" name="Gen" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+        Male
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input"  formControlName="Gen" value="Female" type="radio" name="Gen" id="flexRadioDefault2" >
+      <label class="form-check-label" for="flexRadioDefault2">
+        Female
+      </label>
+    </div>
+    <div *ngIf="gen && gen.invalid && gen.touched">
+      <small *ngIf="gen.errors?.['required']">
+          Empty field
+      </small>
+    </div>
+  </div>
+
+  <div formGroupName="EducationDetails">
+    <div formGroupName="tenth">
+      <label for="">marks</label>
+      <input type="text" formControlName="marks" class="form-control">
+      <div *ngIf="Tmarks && Tmarks.invalid && Tmarks.touched">
+        <small *ngIf="Tmarks.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="Tmarks.errors?.['maxLength']">
+            length is more than 3
+        </small>
+        <small *ngIf="Tmarks.errors?.['pattern']">
+          No space Allowed
+                </small>
+      </div>
+      <label for="">Grade</label>
+      <input type="text" formControlName="Grade" class="form-control">
+      <div *ngIf="Tgrade && Tgrade.invalid && Tgrade.touched">
+        <small *ngIf="Tgrade.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="Tgrade.errors?.['pattern']">
+            No space Allowed
+        </small>
+      </div>
+
+      <label for="">Yearofpass</label>
+      <input type="text" formControlName="Yearofpass" class="form-control">
+      <div *ngIf="Tyear && Tyear.invalid && Tyear.touched">
+        <small *ngIf="Tyear.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="Tyear.errors?.['pattern']">
+          No space Allowed
+        </small>
+      </div>
+
+    </div>
+    <div formGroupName="twelve">
+      <label for="">marks</label>
+
+      <input type="text" formControlName="marks" class="form-control">
+      <div *ngIf="TWmarks && TWmarks.invalid && TWmarks.touched">
+        <small *ngIf="TWmarks.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="TWmarks.errors?.['pattern']">
+          No space Allowed
+        </small>
+      </div>
+      <label for="">Grade</label>
+
+      <input type="text" formControlName="Grade" class="form-control">
+      <div *ngIf="TWgrade && TWgrade.invalid && TWgrade.touched">
+        <small *ngIf="TWgrade.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="TWgrade.errors?.['pattern']">
+          No space Allowed
+        </small>
+      </div>
+      <label for="">Yearofpass</label>
+
+      <input type="text" formControlName="Yearofpass" class="form-control">
+      <div *ngIf="TWyear && TWyear.invalid && TWyear.touched">
+        <small *ngIf="TWyear.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="TWyear.errors?.['pattern']">
+          No space Allowed
+        </small>
+      </div>
+
+    </div>
+    <div formGroupName="Degree">
+      <label for="">marks</label>
+
+      <input type="text" formControlName="marks" class="form-control">
+      <div *ngIf="Dmark && Dmark.invalid && Dmark.touched">
+        <small *ngIf="Dmark.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="Dmark.errors?.['pattern']">
+          No space Allowed
+        </small>
+      </div>
+
+      <label for="">Grade</label>
+
+      <input type="text" formControlName="Grade" class="form-control">
+      <div *ngIf="Dgrade && Dgrade.invalid && Dgrade.touched">
+        <small *ngIf="Dgrade.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="Dgrade.errors?.['pattern']">
+          No space Allowed
+        </small>
+      </div>
+      <label for="">Yearofpass</label>
+
+      <input type="text" formControlName="Yearofpass" class="form-control">
+      <div *ngIf="Dyear && Dyear.invalid && Dyear.touched">
+        <small *ngIf="Dyear.errors?.['required']">
+            Empty field
+        </small>
+        <small *ngIf="Dyear.errors?.['pattern']">
+          No space Allowed
+        </small>
+      </div>
+    </div>
+
+  </div>
+
+    <button (click)="add()" class="btn btn-primary">Add Data</button>
+    {{form.value|json}}
+  </form>
+</div>
